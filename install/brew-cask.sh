@@ -10,7 +10,6 @@ apps=(
     gyazo
     spectacle
     flux
-    dash
     imagealpha
     imageoptim
     iterm2
@@ -22,13 +21,11 @@ apps=(
     malwarebytes-anti-malware
     glimmerblocker
     hammerspoon
-    kaleidoscope
     macdown
     opera
     screenflow
     slack
     transmit
-    elmedia-player
 )
 
 brew cask install "${apps[@]}"

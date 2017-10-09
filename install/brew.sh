@@ -44,12 +44,14 @@ brew upgrade --all
 # which version I'm using.
 
 apps=(
+    antigen
     rvm
     nvm
     mongodb
     bash-completion2
     coreutils
     moreutils
+    wp-cli
     findutils
     ffmpeg
     fortune

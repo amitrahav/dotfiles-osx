@@ -204,3 +204,6 @@ alias update_brew_npm_gem='brew_update; npm install npm -g; npm update -g; sudo 
 for method in GET HEAD POST PUT DELETE TRACE OPTIONS; do
   alias "$method"="lwp-request -m '$method'"
 done
+
+# create .nvm initial file
+alias nvminit="echo $(nvm current) > .nvm"
