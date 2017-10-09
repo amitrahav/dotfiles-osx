@@ -55,6 +55,8 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
 
 export HOMEBREW_CASK_OPTS="--appdir=/Applications"
+export HOMEBREW_GITHUB_API_TOKEN="5bdbdbe083e6e33aa1929eee8298369971684326"
+
 
 # here's LS_COLORS
 # github.com/trapd00r/LS_COLORS

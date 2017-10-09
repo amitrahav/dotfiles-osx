@@ -150,7 +150,6 @@ source ~/.iterm2_shell_integration.`basename $SHELL`
   export ANDROID_HOME="$HOME/Library/Android/sdk"
   export PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
 
-
 #yarn
   export PATH="$PATH:`yarn global bin`"
 
@@ -175,3 +174,4 @@ export PATH=$ES_HOME/bin:$JAVA_HOME/bin:$PATH
 
 # env vars for tiny-care-terminal - from https://github.com/notwaldorf/tiny-care-terminal
   source ~/dotfiles/shell/tiny-care.env
+

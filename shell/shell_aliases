@@ -206,4 +206,4 @@ for method in GET HEAD POST PUT DELETE TRACE OPTIONS; do
 done
 
 # create .nvm initial file
-alias nvminit="echo $(nvm current) > .nvm"
+alias nvminit="echo $(nvm current) > .nvmrc"
