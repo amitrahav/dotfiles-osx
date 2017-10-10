@@ -143,7 +143,7 @@ source ~/.iterm2_shell_integration.`basename $SHELL`
   fpath=(/usr/local/share/zsh-cometions $fpath)
 
 #brew
-  export HOMEBREW_GITHUB_API_TOKEN="81e96387d9a1c7751da8b69b7be9e98f5673d979"
+  export HOMEBREW_GITHUB_API_TOKEN="XXXX"
   export SSL_CERT_FILE="/etc/ssl/certs/cacert.pem"
 
 #android studio path
