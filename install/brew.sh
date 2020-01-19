@@ -74,6 +74,8 @@ apps=(
     ffmpeg --with-libvpx
     wget
     wifi-password
+    zsh
+    antigen
 )
 
 brew install "${apps[@]}"

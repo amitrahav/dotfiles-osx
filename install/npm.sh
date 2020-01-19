@@ -43,17 +43,19 @@ packages=(
     git-recent
     git-open
     gulp
-    grunt
-    grunt-cli
     http-server
     servedir
-    flow-bin
-    flow-typed
-    npm-check-updates
     webpack
-    nodemon
-    svgo
-    yo
+    lodash
+    moment
+    async
+    vue
+    axios
+    nuxt
+    eslint
+    chalk
+    tiny-care-terminal
+    trash-cli
 )
 
 npm install -g "${packages[@]}"

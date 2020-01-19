@@ -143,6 +143,20 @@ alias gdtp='git stash pop' # bring back your changes, but it removes them from y
 alias gchp='git cherry-pick' # cherry pick the committed code in your own branch (gchp [hash])
 alias gcln='git clean -xfd' # remove untracked files
 
+# FileSearch
+function f() { find . -iname "*$1*" ${@:2} }
+function r() { grep "$1" ${@:2} -R . }
+
+#mkdir and cd
+function mkcd() { mkdir -p "$@" && cd "$_"; }
+
+# Aliases
+alias cppcompile='c++ -std=c++11 -stdlib=libc++'
+
+# Use sublimetext for editing config files
+alias zshconfig="code ~/.zshrc"
+alias envconfig="code ~/Projects/config/env.sh"
+
 # Undo a `git push`
 alias undopush="git push -f origin HEAD^:master"
 

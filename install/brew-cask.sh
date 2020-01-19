@@ -9,20 +9,14 @@ brew tap caskroom/versions
 apps=(
     gyazo
     spectacle
-    flux
     imagealpha
     imageoptim
     iterm2
-    webstorm
     firefox
-    firefoxnightly
     google-chrome
-    google-chrome-canary
     malwarebytes-anti-malware
     glimmerblocker
-    hammerspoon
     macdown
-    opera
     screenflow
     slack
     transmit
