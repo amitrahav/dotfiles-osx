@@ -2,9 +2,9 @@
 
 #
 # Reasonably sets OS X defaults. My sources:
-#  - https://github.com/skwp/dotfiles/blob/master/bin/osx
-#  - https://github.com/mathiasbynens/dotfiles/blob/master/.osx
-# ~/dotfiles/osx/set-defaults.sh — http://mths.be/osx
+#  - https://github.com/skwp/dotfiles-osx/blob/master/bin/osx
+#  - https://github.com/mathiasbynens/dotfiles-osx/blob/master/.osx
+# ~/dotfiles-osx/osx/set-defaults.sh — http://mths.be/osx
 #
 
 # Set computer name

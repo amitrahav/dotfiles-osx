@@ -1,3 +1,4 @@
+
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
@@ -17,14 +18,40 @@ alias rm="trash"
 alias x+="chmod +x"
 alias -- +x="chmod +x"
 
-# Easier navigation: .., ..., ~ and -
-alias ..="cd .."
-alias cd..="cd .."
-alias ...="cd ../.."
-alias ....="cd ../../.."
-alias .....="cd ../../../.."
-alias ~="cd ~" # `cd` is probably faster to type though
-alias -- -="cd -"
+
+#   -----------------------------
+#   2.  MAKE TERMINAL BETTER
+#   -----------------------------
+
+alias ls='ls -GFhl'
+alias cp='cp -iv'                           # Preferred 'cp' implementation
+alias mv='mv -iv'                           # Preferred 'mv' implementation
+alias mkdir='mkdir -pv'                     # Preferred 'mkdir' implementation
+alias ll='ls -FGlAhp'                       # Preferred 'ls' implementation
+alias less='less -FSRXc'                    # Preferred 'less' implementation
+cd() { builtin cd "$@"; ll; }               # Always list directory contents upon 'cd'
+alias cd..='cd ../'                         # Go back 1 directory level (for fast typers)
+alias ..='cd ../'                           # Go back 1 directory level
+alias ...='cd ../../'                       # Go back 2 directory levels
+alias .3='cd ../../../'                     # Go back 3 directory levels
+alias .4='cd ../../../../'                  # Go back 4 directory levels
+alias .5='cd ../../../../../'               # Go back 5 directory levels
+alias .6='cd ../../../../../../'            # Go back 6 directory levels
+alias edit='code'                           # edit:         Opens any file in sublime editor
+alias f='open -a Finder ./'                 # f:            Opens current directory in MacOS Finder
+alias ~="cd ~"                              # ~:            Go Home
+alias c='clear'                             # c:            Clear terminal display
+alias which='type -'                        # which:        Find executables
+alias path='echo -e ${PATH//:/\\n}'         # path:         Echo all executable Paths
+alias show_options='shopt'                  # Show_options: display bash options settings
+alias fix_stty='stty sane'                  # fix_stty:     Restore terminal settings when screwed up
+alias cic='set completion-ignore-case On'   # cic:          Make tab-completion case-insensitive
+mkcd () { mkdir -p "$1" && cd "$1"; }       # mkcd:          Makes new Dir and jumps inside
+trash () { command mv "$@" ~/.Trash ; }     # trash:        Moves a file to the MacOS trash
+ql () { qlmanage -p "$*" >& /dev/null; }    # ql:           Opens any file in MacOS Quicklook Preview
+alias DT='tee ~/Desktop/terminalOut.txt'    # DT:           Pipe content to file on MacOS Desktop
+
+test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
 
 # mv, rm, cp, gunzip
 alias mv='mv -v'
@@ -205,7 +232,7 @@ alias hidedesktop="defaults write com.apple.finder CreateDesktop -bool false && 
 
 # zshrc config
 alias zshrc="${EDITOR} ${$(cd -P $(dirname $0) && cd ..; pwd -P)}"
-alias reload="source ~/.zshrc && echo 'Shell config reloaded from ~/.zshrc'"
+alias reload="zsh && echo 'Shell config reloaded from ~/.zshrc'"
 
 # zsh.local config
 alias localrc="if [[ -a ~/.zsh.local ]]; then ${EDITOR} ~/.zsh.local; fi"
@@ -221,3 +248,37 @@ done
 
 # create .nvm initial file
 alias nvminit="echo $(nvm current) > .nvmrc"
+
+# Automatically activate Git projects' virtual environments based on the
+# directory name of the project. Virtual environment name can be overridden
+# by placing a .venv file in the project root with a virtualenv name in it
+function workon_cwd {
+    # Check that this is a Git repo
+    GIT_DIR=`git rev-parse --git-dir 2> /dev/null`
+    if [ $? == 0 ]; then
+        # Find the repo root and check for virtualenv name override
+        GIT_DIR=`\cd $GIT_DIR; pwd`
+        PROJECT_ROOT=`dirname "$GIT_DIR"`
+        ENV_NAME=`basename "$PROJECT_ROOT"`
+        if [ -f "$PROJECT_ROOT/.venv" ]; then
+            ENV_NAME=`cat "$PROJECT_ROOT/.venv"`
+        fi
+        # Activate the environment only if it is not already active
+        if [ "$VIRTUAL_ENV" != "$WORKON_HOME/$ENV_NAME" ]; then
+            if [ -e "$WORKON_HOME/$ENV_NAME/bin/activate" ]; then
+                workon "$ENV_NAME" && export CD_VIRTUAL_ENV="$ENV_NAME"
+            fi
+        fi
+    elif [ $CD_VIRTUAL_ENV ]; then
+        # We've just left the repo, deactivate the environment
+        # Note: this only happens if the virtualenv was activated automatically
+        deactivate && unset CD_VIRTUAL_ENV
+    fi
+}
+
+# New cd function that does the virtualenv magic
+function venv_cd {
+    cd "$@" && workon_cwd
+}
+
+alias cd="venv_cd"

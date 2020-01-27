@@ -1,19 +1,64 @@
+#   Set Paths
+#   ------------------------------------------------------------
+  declare -a dirs_to_prepend
+  dirs_to_prepend=(
+    "/usr/bin"
+    "/usr/local/sbin"
+    "/usr/local/git/bin"
+    "/usr/local"
+    "usr/local/bin"
+    "/usr/local/mysql/bin"
+    "$HOME/dotfiles-osx/bin"
+    "$HOME/bin"
+    "$HOME/.rvm/bin"
+    "$(brew --prefix ruby)/bin"
+    "$(brew --prefix coreutils)/libexec/gnubin" # Add brew-installed GNU core utilities bin
+    "$(brew --prefix)/share/npm/bin" # Add npm-installed package bin
+    "/usr/bin/gcc" # C compailer
+    "/usr/local/git/bin" #git
+    "${HOME}/Library/Python/3.7/bin" # Python
+    "/usr/local/opt/openssl@1.1/bin" # OpenSSL
+    "$HOME/.phpenv/bin:$PATH" # env-php
+    "/usr/local/opt/gnu-sed/libexec/gnubin" # gnu-sed from homebrew
+    "/usr/local/opt/grep/libexec/gnubin" # grep from homebrew
+    "/Applications/Visual Studio Code.app/Contents/Resources/app/bin" #VsCode
+    "/Applications/Postgres.app/Contents/Versions/latest/bin" # Postgres app stuffs
+  )
+
+  for dir in ${(k)dirs_to_prepend[@]}
+  do
+    if [ -d ${dir} ]; then
+      # If these directories exist, then prepend them to existing PATH
+      PATH="$PATH:${dir}"
+    fi
+  done
+
+  unset dirs_to_prepend
+
+
+#   Set Default Editor (option of changing between local and remote)
+#   ------------------------------------------------------------
+  if [[ -n $SSH_CONNECTION ]]; then
+    export EDITOR='nano'
+  else
+    export EDITOR='nano'
+  fi
+
+#   Set default blocksize for ls, df, du
+#   from this: http://hints.macworld.com/comment.php?mode=view&cid=24491
+#   ------------------------------------------------------------
+  export BLOCKSIZE=1k
+
 # Defaults
 export SHELL=/bin/zsh
 
-# Preferred editor for local and remote sessions
-if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='nano'
-else
-  export EDITOR='nano'
-fi
+# Python
+# export PYTHONHOME="/usr/local"
+export PYTHONPATH="/usr/local/bin/python3"
 
 # Prefer US English and use UTF-8
 export LC_ALL="en_US.UTF-8"
 export LANG="en_US"
-
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
 
 # SSH
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
@@ -50,15 +95,50 @@ less_options=(
 export LESS="${less_options[*]}"
 export PAGER='less'
 
-# Load nvm
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+# NVM
+  export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+  [ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
-export HOMEBREW_CASK_OPTS="--appdir=/Applications"
-export HOMEBREW_GITHUB_API_TOKEN="5bdbdbe083e6e33aa1929eee8298369971684326"
+# Homebrew
+  export HOMEBREW_CASK_OPTS="--appdir=/Applications"
+  export HOMEBREW_GITHUB_API_TOKEN="5bdbdbe083e6e33aa1929eee8298369971684326"
 
+# gettext
+  export LDFLAGS="-L/usr/local/opt/gettext/lib"
+  export CPPFLAGS="-I/usr/local/opt/gettext/include"
 
-# here's LS_COLORS
-# github.com/trapd00r/LS_COLORS
-# command -v gdircolors >/dev/null 2>&1 || alias gdircolors="dircolors"
-# eval "$(gdircolors -b ~/.dircolors)"
+# Python with virtualenvwrapper - the lazy edition 
+# https://virtualenvwrapper.readthedocs.io/en/latest/install.html#python-versions
+  export WORKON_HOME=$HOME/.virtualenvs
+  export PROJECT_HOME=$HOME/Projects
+  export VIRTUALENVWRAPPER_SCRIPT=/usr/local/bin/virtualenvwrapper.sh
+
+#brew
+  export HOMEBREW_GITHUB_API_TOKEN="XXXX"
+  export SSL_CERT_FILE=$(brew --prefix)/etc/openssl/cert.pem
+
+#android studio path
+  export ANDROID_HOME="$HOME/Library/Android/sdk"
+  export PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
+
+# yarn  // TODO: adding condition or remove
+  # export PATH="$PATH:`yarn global bin`"
+
+# avn (automatic version switching for node)
+  [[ -s "$HOME/.avn/bin/avn.sh" ]] && source "$HOME/.avn/bin/avn.sh" # load avn
+
+# elastic search
+  export ES_HOME=~/apps/elasticsearch/elasticsearch-2.3.1
+  export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_77/Contents/Home
+  export PATH=$ES_HOME/bin:$JAVA_HOME/bin:$PATH
+
+# Zlib
+  export LDFLAGS="-L/usr/local/opt/zlib/lib"
+  export CPPFLAGS="-I/usr/local/opt/zlib/include"
+
+# Python Pyenv  https://github.com/pyenv/pyenv/wiki/common-build-problems
+  export SDKROOT=${XCODE_ROOT}/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk
+  export MACOSX_DEPLOYMENT_TARGET=10.14
+  export CURL_CA_BUNDLE=$(brew --prefix)/etc/openssl/cert.pem
+

@@ -1,3 +1,14 @@
+# Source local extra (private) settings specific to machine if it exists
+[ -f ~/.zsh.local ] && source ~/.zsh.local
+
+# shell integration -> https://iterm2.com/documentation-shell-integration.html
+source ~/.iterm2_shell_integration.`basename $SHELL`
+
+#just php iterm intefration and code snippets
+  test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+  export PATH="$(which phpcs):$PATH"
+
+
 if [ -f ~/.antigen/antigen.log ]; then
   # Load antigen
   source $(brew --prefix)/share/antigen/antigen.zsh
@@ -36,8 +47,6 @@ if [ -f ~/.antigen/antigen.log ]; then
   antigen bundle z
 
   antigen bundle lein
-  antigen bundle web-search
-
 
   # Load the theme.
   antigen theme caiogondim/bullet-train-oh-my-zsh-theme bullet-train
@@ -64,72 +73,12 @@ else
 
 fi
 
-
-# Directories to be prepended to $PATH
-declare -a dirs_to_prepend
-dirs_to_prepend=(
-  "/usr/bin"
-  "/usr/local/sbin"
-  "/usr/local/git/bin"
-  "/usr/local"
-  "/usr/local/mysql/bin"
-  "/sw/bin"
-  "$HOME/dotfiles/bin"
-  "$HOME/bin"
-  "$HOME/.rvm/bin"
-  "$(brew --prefix ruby)/bin"
-  "$(brew --prefix coreutils)/libexec/gnubin" # Add brew-installed GNU core utilities bin
-  "$(brew --prefix)/share/npm/bin" # Add npm-installed package bin
-)
-
-# Explicitly configured $PATH
-PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
-
-for dir in ${(k)dirs_to_prepend[@]}
-do
-  if [ -d ${dir} ]; then
-    # If these directories exist, then prepend them to existing PATH
-    PATH="$PATH:${dir}"
-  fi
-done
-
-unset dirs_to_prepend
-
-export PATH
-
-
-
-# User configuration
-
 # Load the shell dotfiles
 for file in $HOME/.{shell_exports,shell_aliases,shell_functions,shell_config}; do
   [ -r "$file" ] && [ -f "$file" ] && source "$file";
 done;
 unset file;
 
-# Automatically list directory contents on `cd`.
-auto-ls () {
-   emulate -L zsh;
-   # explicit sexy ls'ing as aliases arent honored in here.
-   hash gls >/dev/null 2>&1 && CLICOLOR_FORCE=1 gls -aFh --color --group-directories-first || ls
- }
-hpwd_functions=( auto-ls $chpwd_functions )
-
-# Source local extra (private) settings specific to machine if it exists
-[ -f ~/.zsh.local ] && source ~/.zsh.local
-
-setopt EXTENDED_GLOB
-
-# shell integration -> https://iterm2.com/documentation-shell-integration.html
-source ~/.iterm2_shell_integration.`basename $SHELL`
-
-# This loads nvm
-  export NVM_DIR="/Users/amit/.nvm"
-  [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
-
-#just php iterm intefration and code snippets
-  test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
-  export PATH="$(which phpcs):$PATH"
 
 #phpbrew
   export PATH="/usr/local/bin/phpbrew:$PATH"
@@ -138,35 +87,20 @@ source ~/.iterm2_shell_integration.`basename $SHELL`
 #wp-cli completions
   fpath=(/usr/local/share/zsh-cometions $fpath)
 
-#brew
-  export HOMEBREW_GITHUB_API_TOKEN="XXXX"
-  export SSL_CERT_FILE="/etc/ssl/certs/cacert.pem"
-
-#android studio path
-  export ANDROID_HOME="$HOME/Library/Android/sdk"
-  export PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
-
-#yarn
-  export PATH="$PATH:`yarn global bin`"
-
-# avn (automatic version switching for node)
-  export PATH="/usr/local/sbin:$PATH"
-  [[ -s "$HOME/.avn/bin/avn.sh" ]] && source "$HOME/.avn/bin/avn.sh" # load avn
-  export PATH="/usr/local/opt/mongodb@3.2/bin:$PATH"
-
-# Python with virtualenvwrapper - the lazy edition 
+# Python with virtualenvwrapper
 # https://virtualenvwrapper.readthedocs.io/en/latest/install.html#python-versions
-  export WORKON_HOME=$HOME/.virtualenvs
-  export PROJECT_HOME=$HOME/Projects
-  export VIRTUALENVWRAPPER_SCRIPT=/usr/local/bin/virtualenvwrapper.sh
-  source /usr/local/bin/virtualenvwrapper_lazy.sh
-
-
-# elastic search
-  export ES_HOME=~/apps/elasticsearch/elasticsearch-2.3.1
-  export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_77/Contents/Home
-  export PATH=$ES_HOME/bin:$JAVA_HOME/bin:$PATH
+  if [ -f /Users/amit/Library/Python/2.7/bin/virtualenvwrapper.sh ]; then
+    source /Users/amit/Library/Python/2.7/bin/virtualenvwrapper.sh
+  fi
+  
+# Pyenv
+  eval "$(pyenv init -)"
 
 # env vars for tiny-care-terminal - from https://github.com/notwaldorf/tiny-care-terminal
-  source ~/dotfiles/shell/tiny-care.env
+  source ~/dotfiles-osx/shell/tiny-care.env
 
+# heroku autocomplete setup
+  HEROKU_AC_ZSH_SETUP_PATH=/Users/amit/Library/Caches/heroku/autocomplete/zsh_setup && test -f $HEROKU_AC_ZSH_SETUP_PATH && source $HEROKU_AC_ZSH_SETUP_PATH;
+
+# thefuck https://github.com/nvbn/thefuck
+  eval $(thefuck --alias)

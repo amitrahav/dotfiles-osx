@@ -6650,7 +6650,7 @@
 		</dict>
 	</dict>
 	<key>PrefsCustomFolder</key>
-	<string>/Users/nicksp/dotfiles/iterm</string>
+	<string>/Users/nicksp/dotfiles-osx/iterm</string>
 	<key>PromptOnQuit</key>
 	<false/>
 	<key>QuitWhenAllWindowsClosed</key>

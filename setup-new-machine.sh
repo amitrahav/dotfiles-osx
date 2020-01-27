@@ -20,19 +20,11 @@ cp ~/.extra ~/migration/home
 cp ~/.z ~/migration/home
 cp -R ~/.ssh ~/migration/home
 cp /Library/Preferences/SystemConfiguration/com.apple.airport.preferences.plist ~/migration  # wifi
-cp ~/Library/Preferences/net.limechat.LimeChat.plist ~/migration
-cp ~/Library/Preferences/com.tinyspeck.slackmacgap.plist ~/migration
 cp -R ~/Library/Services ~/migration # automator stuff
-cp -R ~/Documents ~/migration
 cp ~/.bash_history ~/migration # back it up for fun?
 cp ~/.gitconfig.local ~/migration
 cp ~/.z ~/migration # z history file.
 
-
-# iTerm settings.
-  # Prefs, General, Use settings from Folder
-
-# Finder settings
 
 ###############################################################################
 # XCode Command Line Tools                                                    #
@@ -56,7 +48,7 @@ if ! xcode-select --print-path &> /dev/null; then
 
   # Point the `xcode-select` developer directory to
   # the appropriate directory from within `Xcode.app`
-  # https://github.com/alrra/dotfiles/issues/13
+  # https://github.com/alrra/dotfiles-osx/issues/13
 
   sudo xcode-select -switch /Applications/Xcode.app/Contents/Developer
   print_result $? 'Make "xcode-select" developer directory point to Xcode'
@@ -64,7 +56,7 @@ if ! xcode-select --print-path &> /dev/null; then
   # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   # Prompt user to agree to the terms of the Xcode license
-  # https://github.com/alrra/dotfiles/issues/10
+  # https://github.com/alrra/dotfiles-osx/issues/10
 
   sudo xcodebuild -license
   print_result $? 'Agree with the XCode Command Line Tools licence'
@@ -76,27 +68,27 @@ fi
 # Homebrew                                                                    #
 ###############################################################################
 
-$HOME/dotfiles/install/brew.sh
-$HOME/dotfiles/install/brew-cask.sh
+$HOME/dotfiles-osx/install/brew.sh
+$HOME/dotfiles-osx/install/brew-cask.sh
 
 
 ###############################################################################
 # Node (by NVM)                                                               #
 ###############################################################################
 
-$HOME/dotfiles/install/npm.sh
+$HOME/dotfiles-osx/install/npm.sh
 
 
 ###############################################################################
 # OSX defaults                                                                #
-# https://github.com/hjuutilainen/dotfiles/blob/master/bin/osx-user-defaults.sh
+# https://github.com/hjuutilainen/dotfiles-osx/blob/master/bin/osx-user-defaults.sh
 ###############################################################################
 
-sh osx/set-defaults.sh
+$HOME/dotfiles-osx/osx/set-defaults.sh
 
 
 ###############################################################################
 # Symlinks to link dotfiles into ~/                                           #
 ###############################################################################
 
-./setup.sh
+$HOME/dotfiles-osx/setup.sh

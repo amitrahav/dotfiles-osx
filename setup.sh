@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# https://github.com/kaicataldo/dotfiles/blob/master/bin/install.sh
+# https://github.com/kaicataldo/dotfiles-osx/blob/master/bin/install.sh
 
 # This symlinks all the dotfiles (and .atom/) to ~/
 # It also symlinks ~/bin for easy updating
@@ -138,13 +138,14 @@ SCRIPT_DIR="$(cd "$(dirname "$0")"; pwd -P)"
 DOTFILES_DIR="$(dirname "$SCRIPT_DIR")"
 
 
-dir=~/dotfiles                        # dotfiles directory
+dir=~/dotfiles-osx                    # dotfiles directory
 dir_backup=~/dotfiles_old             # old dotfiles backup directory
 
 # Get current dir (so run this script from anywhere)
 
 export DOTFILES_DIR
 DOTFILES_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+echo $DOTFILES_DIR
 
 # Create dotfiles_old in homedir
 echo -n "Creating $dir_backup for backup of any existing dotfiles in ~..."
@@ -187,7 +188,9 @@ declare -a FILES_TO_SYMLINK=(
 
 for i in ${FILES_TO_SYMLINK[@]}; do
   echo "Moving any existing dotfiles from ~ to $dir_backup"
-  mv ~/.${i##*/} ~/dotfiles_old/
+  if [ ! -f "~/.${i##*/}" ]; then
+    mv ~/.${i##*/} ~/dotfiles_old/
+  fi
 done
 
 
@@ -225,7 +228,7 @@ main() {
   unset FILES_TO_SYMLINK
 
   # Copy binaries
-  ln -fs $HOME/dotfiles/bin $HOME
+  ln -fs $HOME/dotfiles-osx/bin $HOME
 
   declare -a BINARIES=(
     'batcharge.py'
@@ -247,7 +250,7 @@ main() {
   unset BINARIES
 
   # Symlink online-check.sh
-  ln -fs $HOME/dotfiles/lib/online-check.sh $HOME/online-check.sh
+  ln -fs $HOME/dotfiles-osx/lib/online-check.sh $HOME/online-check.sh
 
   # Write out current crontab
   crontab -l > mycron
@@ -294,23 +297,34 @@ install_zsh () {
 }
 
 # Package managers & packages
+if [ -f /bin/zsh -o -f /usr/bin/zsh ]; then
+  install_zsh
+else
+  . "$DOTFILES_DIR/install/brew.sh"
+fi
 
-. "$DOTFILES_DIR/install/brew.sh"
-. "$DOTFILES_DIR/install/npm.sh"
+FILE="$HOME/.nvm/nvm.sh"
+if [ ! -f "$FILE" ]; then
+  . "$DOTFILES_DIR/install/npm.sh"
+fi
 
 if [ "$(uname)" == "Darwin" ]; then
     . "$DOTFILES_DIR/install/brew-cask.sh"
 fi
 
 main
-install_zsh
 
 ###############################################################################
 # Zsh                                                                         #
 ###############################################################################
 
 # Install Zsh settings
-ln -s $DOTFILES_DIR/zsh/themes/nick.zsh-theme $HOME/.oh-my-zsh/themes
+ln -s $DOTFILES_DIR/shell/nick.zsh-theme $HOME/.oh-my-zsh/themes
+
+###############################################################################
+# Reload terminal                                                             #
+###############################################################################
+source ~/.zshrc
 
 
 ###############################################################################

@@ -179,7 +179,7 @@
 
 # Git mergetool
 [merge]
-	tool = sublime
+	tool = opendiff
 
 [core]
         editor = nano
@@ -254,17 +254,17 @@
 
 [fetch]
         prune = true
+
 [user]
-	name = Amit Rahav
+	name = amitrahav
 	email = amit.r.89@gmail.com
 
 [credential]
 	helper = osxkeychain
 
-[mergetool "sublime"]
-	cmd = subl -w $MERGED
-	trustExitCode = false
 [url "https://"]
 	insteadOf = git://
 [url "https://github.com/"]
 	insteadOf = git://github.com/
+[http]
+	sslVerify = true

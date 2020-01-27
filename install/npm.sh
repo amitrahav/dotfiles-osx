@@ -13,6 +13,17 @@
 #     ./node_modules/.bin/webpack --config webpack.local.config.js
 #
 
+# Installing  NVM if not exsits
+FILE="$HOME/.nvm/nvm.sh"
+if [ ! -f "$FILE" ]; then
+  
+  echo "Installing NVM..."
+
+  git clone http://github.com/creationix/nvm.git .nvm
+
+fi
+
+
 if test ! $(which nvm)
 then
   echo "Installing a stable version of Node..."

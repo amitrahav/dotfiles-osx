@@ -8,3 +8,6 @@ open "${DOTFILES_DIR}/iterm/themes/Solarized Dark.itermcolors"
 
 # Don’t display the annoying prompt when quitting iTerm
 defaults write com.googlecode.iterm2 PromptOnQuit -bool false
+
+# Integrated shell
+curl -L https://iterm2.com/shell_integration/install_shell_integration_and_utilities.sh | bash
