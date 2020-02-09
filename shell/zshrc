@@ -4,10 +4,12 @@
 # shell integration -> https://iterm2.com/documentation-shell-integration.html
 source ~/.iterm2_shell_integration.`basename $SHELL`
 
+# Load personal prompt style before zsh
+source ~/dotfiles-osx/shell/custome_prompt.sh
+
 #just php iterm intefration and code snippets
   test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
   export PATH="$(which phpcs):$PATH"
-
 
 if [ -f ~/.antigen/antigen.log ]; then
   # Load antigen
@@ -63,7 +65,7 @@ else
 
   plugins=(git mvn z sudo adb gradle git-extras)
   plugins+=(zsh-completions)
-  autoload -U compinit && compinit
+  autoload -U compinit && compinit # You should make sure $(compaudit) directories are owned by you and have 775 premissions
 
   if [ -f `brew --prefix`/etc/bash_completion ]; then
     . `brew --prefix`/etc/bash_completion
@@ -72,6 +74,13 @@ else
   source $ZSH/oh-my-zsh.sh
 
 fi
+
+# Hook function which gets executed right before shell prints prompt showing battery power.
+function precmd() {
+  local bottom_right=$(printf '$(battery)')
+  RPROMPT=$bottom_right
+}
+
 
 # Load the shell dotfiles
 for file in $HOME/.{shell_exports,shell_aliases,shell_functions,shell_config}; do
@@ -100,7 +109,7 @@ unset file;
   source ~/dotfiles-osx/shell/tiny-care.env
 
 # heroku autocomplete setup
-  HEROKU_AC_ZSH_SETUP_PATH=/Users/amit/Library/Caches/heroku/autocomplete/zsh_setup && test -f $HEROKU_AC_ZSH_SETUP_PATH && source $HEROKU_AC_ZSH_SETUP_PATH;
+  export HEROKU_AC_ZSH_SETUP_PATH=/Users/amit/Library/Caches/heroku/autocomplete/zsh_setup && test -f $HEROKU_AC_ZSH_SETUP_PATH && source $HEROKU_AC_ZSH_SETUP_PATH;
 
 # thefuck https://github.com/nvbn/thefuck
   eval $(thefuck --alias)

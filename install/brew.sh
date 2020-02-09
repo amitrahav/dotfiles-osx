@@ -46,7 +46,6 @@ apps=(
     bash-completion2
     moreutils
     autojump
-    fortune
     ponysay
     thefuck
 
@@ -76,7 +75,7 @@ brew install "${apps[@]}"
 brew tap heroku/brew && brew install heroku
 heroku autocomplete --refresh-cache
 
-# Goles buttery
+# Goles battery
 brew tap Goles/battery && brew install battery
 
 # Remove outdated versions from the cellar

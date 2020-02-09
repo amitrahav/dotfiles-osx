@@ -1,9 +1,18 @@
 # Amit Rahav's Dotfiles
+
 A worm and safe place for all of my dotfiles.
 
 Basicity a personal version of [Nick Plekhanov's Dotfiles](https://github.com/nicksp/dotfiles).
 
 Running on my OSX mojave at the moment, most parts was tested on Sierra, High sierra and Catalina.
+
+## TL;DR
+
+All off my os settings.
+
+FAVORITES:
++ tiny-care-terminal
++ Iterm2 + oh-my-zsh autocomplete and theme!
 
 ## What's in the box
 
@@ -51,45 +60,77 @@ There are some committed files with a my name set as a value. you should change 
 1. Install homebrew if is not yet installed.
 2. Update and upgrade brew formulas.
 3. Install this formulas:
-    1. [bash-compilation2](https://github.com/scop/bash-completion) - set of bash compilation
-    2. [moreutils]() - 
-    3. [autojump](https://github.com/joelthelion/autojump) - a faster way to navigate your filesystem.
-    4. [fortune]() -
-    5. [ponysay](https://github.com/erkin/ponysay) - enables pony to speak.
-    6. [gnu-sed]() - 
-    7. [grep]() -
-    8. [tree](http://mama.indstate.edu/users/ice/tree/) - A directory listing utility that produces a depth indented listing of files.
-    9. [git]() -
-    10. [git-extras]() -
-    11. [hub](https://hub.github.com/) - use github from command line.
-    12. source-highlight - syntax highlighter.
-    13. [the_silver_searcher](https://geoff.greer.fm/ag/) - Code-search similar to ack.
-    14. [wifi-password](https://github.com/rauchg/wifi-password) - People ask you for the Wi-Fi password. Answer quickly!
-    15. [zlib](https://zlib.net/) - General-purpose lossless data-compression library.
-    16. python3 - install system-wide python3, only for using virtualenvwrapper.
-    17. [ffmpeg](https://www.ffmpeg.org/) - A complete, cross-platform solution to record, convert and stream audio and video.
-    18. [imagemagick](https://imagemagick.org/index.php) - Use ImageMagick® to create, edit, compose, or convert bitmap images. It can read and write images in a variety of formats (over 200) including PNG, JPEG, GIF, HEIC, TIFF, DPX, EXR, WebP, Postscript, PDF, and SVG
-    19. [heruko](https://devcenter.heroku.com/articles/heroku-cli) - The Heroku Command Line Interface (CLI) makes it easy to create and manage your Heroku apps directly from the terminal. It’s an essential part of using Heroku.
-    20. [battery](https://github.com/Goles/Battery) - Bash script to display your Laptop's battery status on the terminal.
-    21. [Fuck] (https://github.com/nvbn/thefuck): Correct your previous command. 
+    1. [Bash-compilation2](https://github.com/scop/bash-completion) - set of bash compilation
+    2. [Moreutils](https://joeyh.name/code/moreutils/) - Collection of tools that nobody wrote when UNIX was young
+    3. [Autojump](https://github.com/joelthelion/autojump) - a faster way to navigate your filesystem.
+    4. [Ponysay](https://github.com/erkin/ponysay) - enables pony to speak.
+    5. [Gnu-sed](https://www.gnu.org/software/sed/) - GNU implementation of the famous stream editor
+    6. [Grep](https://www.gnu.org/software/grep/) - Gnu style CLI search tool
+    7. [Tree](http://mama.indstate.edu/users/ice/tree/) - A directory listing utility that produces a depth indented listing of files.
+    8. [Git-extras]() -
+    9. [Hub](https://hub.github.com/) - use github from command line.
+    10. source-highlight - syntax highlighter.
+    11. [The_silver_searcher](https://geoff.greer.fm/ag/) - Code-search similar to ack.
+    12. [Wifi-password](https://github.com/rauchg/wifi-password) - People ask you for the Wi-Fi password. Answer quickly!
+    13. [Zlib](https://zlib.net/) - General-purpose lossless data-compression library.
+    14. python3 - install system-wide python3, only for using virtualenvwrapper.
+    15. [Ffmpeg](https://www.ffmpeg.org/) - A complete, cross-platform solution to record, convert and stream audio and video.
+    16. [Imagemagick](https://imagemagick.org/index.php) - Use ImageMagick® to create, edit, compose, or convert bitmap images. It can read and write images in a variety of formats (over 200) including PNG, JPEG, GIF, HEIC, TIFF, DPX, EXR, WebP, Postscript, PDF, and SVG
+    17. [Heruko](https://devcenter.heroku.com/articles/heroku-cli) - The Heroku Command Line Interface (CLI) makes it easy to create and manage your Heroku apps directly from the terminal. It’s an essential part of using Heroku.
+    18. [Battery](https://github.com/Goles/Battery) - Bash script to display your Laptop's battery status on the terminal.
+    19. [Fuck] (https://github.com/nvbn/thefuck): Correct your previous command. 
     
 ### instal/brew-cask.sh
 
 Homebrew cask is an extension of the homebrew functionality.
 
 Install some awesome extensions:
-1. [gyazo](https://gyazo.com/) - Video screen recorder.
-2. [spectacle](https://www.spectacleapp.com/) - Resize windows easily.
-3. [imagealpha](https://pngmini.com/) - Reduces file sizes of 24-bit PNG files (including alpha transparency).
-4. [imageoptim](https://imageoptim.com/mac) - ImageOptim makes images load faster.
-5. [iterm2](https://iterm2.com/) - Terminal emulator.
+1. [Gyazo](https://gyazo.com/) - Video screen recorder.
+2. [Spectacle](https://www.spectacleapp.com/) - Resize windows easily.
+3. [Imagealpha](https://pngmini.com/) - Reduces file sizes of 24-bit PNG files (including alpha transparency).
+4. [Imageoptim](https://imageoptim.com/mac) - ImageOptim makes images load faster.
+5. [Iterm2](https://iterm2.com/) - Terminal emulator.
 6. google-chrome - The web browser.
-7. [malwarebytes](https://www.malwarebytes.com/mac/) - Antivirus.
-8. [macdown](https://macdown.uranusjr.com/) - Open source markdown editor.
-9. [slack](https://slack.com/) - Work massages.
-10. [transmit](https://transmissionbt.com/) - Torrent client.
+7. [Malwarebytes](https://www.malwarebytes.com/mac/) - Antivirus.
+8. [Macdown](https://macdown.uranusjr.com/) - Open source markdown editor.
+9. [Slack](https://slack.com/) - Work massages.
+10. [Transmit](https://transmissionbt.com/) - Torrent client.
+11. [Microsoft-office](https://gist.github.com/zthxxx/9ddc171d00df98cbf8b4b0d8469ce90a)
+12. [transmission](https://transmissionbt.com/) - torrent client
 
 ++! And all of the [quick look extensions](https://github.com/sindresorhus/quick-look-plugins)
+
+### install/npm.sh
+
+1. Installing  NVM if not exists.
+2. Setting stable node latest release as system default.
+3. Installing those npm packages on the default npm global installation:
+    1. [Diff-so-fancy](https://github.com/so-fancy/diff-so-fancy) - sexy git diffs
+    2. [Git-recent](https://github.com/paulirish/git-recent) - Type `git recent` to see your recent local git branches
+    3. [Git-open](https://github.com/paulirish/git-open) - Type `git open` to open the GitHub page or website for a repository
+    4. [Gulp-cli](https://gulpjs.com/) - Automate and enhance your workflow
+    5. [Servedir](https://github.com/remy/servedir) - servedir is a simple Node web server for offline development and testing: running servedir from a directory will create a quick local web server.
+    6. [Http-server](https://github.com/http-party/http-server) - a simple, zero-configuration command-line http server.
+    7. [Webpack](https://webpack.js.org/) - a module bundler for fast and easy dev time.
+    8. [Eslint](https://eslint.org/) - ESLint is a tool for identifying and reporting on patterns found in ECMAScript/JavaScript code. 
+    9. [Lodash](https://lodash.com/) - A modern JavaScript utility library delivering modularity, performance & extras.
+    10. [MomentJs](https://momentjs.com/) - Parse, validate, manipulate, and display dates and times in JavaScript.
+    11. [Async](http://caolan.github.io/async/v3/) - utility module which provides straight-forward, powerful functions for working with asynchronous JavaScript
+    12. [Axios](https://github.com/axios/axios) - Promise based HTTP client for the browser and node.js
+
+    -- 
+    
+    13. [Vue](https://vuejs.org/) + [vue-cli](https://cli.vuejs.org/)- The Progressive JavaScript Framework    
+    14. [Nuxt](https://nuxtjs.org/) - Vue.js Meta Framework to create complex, fast & universal web applications quickly.
+
+    -- 
+
+    15. [Chalk](https://github.com/chalk/chalk) - Terminal string styling done right
+    16. [Trash-cli](https://github.com/sindresorhus/trash-cli) - Move files and folders to the trash
+
+### install/pip.sh
+
+Install python3 if not already installed, install [pip](https://pip.pypa.io/en/stable/) for package management and [virutalenvwrapper](https://virtualenvwrapper.readthedocs.io/en/latest/) for managing versions.
 
 ## Dependencies 
 
@@ -101,6 +142,7 @@ Install some awesome extensions:
 2. Include Xcode at the apps script as a dependencies.
 3. Install Docker client
 4. Set all Iterm2 location and profile.
+6. Install all VScode plugins
 
 
 ## License

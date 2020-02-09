@@ -53,7 +53,7 @@ packages=(
     diff-so-fancy
     git-recent
     git-open
-    gulp
+    gulp-cli
     http-server
     servedir
     webpack
@@ -61,6 +61,7 @@ packages=(
     moment
     async
     vue
+    @vue/cli
     axios
     nuxt
     eslint
