@@ -53,7 +53,6 @@
 export SHELL=/bin/zsh
 
 # Python
-# export PYTHONHOME="/usr/local"
 export PYTHONPATH="/usr/local/bin/python3"
 
 # Prefer US English and use UTF-8
@@ -96,13 +95,12 @@ export LESS="${less_options[*]}"
 export PAGER='less'
 
 # NVM
-  export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
-  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
-  [ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+    export NVM_DIR="$HOME/.nvm"
+    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+    [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # Homebrew
   export HOMEBREW_CASK_OPTS="--appdir=/Applications"
-  export HOMEBREW_GITHUB_API_TOKEN="5bdbdbe083e6e33aa1929eee8298369971684326"
 
 # gettext
   export LDFLAGS="-L/usr/local/opt/gettext/lib"
@@ -116,7 +114,6 @@ export PAGER='less'
   export VIRTUALENVWRAPPER_PYTHON=$(which python3)
 
 #brew
-  export HOMEBREW_GITHUB_API_TOKEN="XXXX"
   export SSL_CERT_FILE=$(brew --prefix)/etc/openssl/cert.pem
 
 #android studio path
@@ -143,3 +140,8 @@ export PAGER='less'
   export MACOSX_DEPLOYMENT_TARGET=10.14
   export CURL_CA_BUNDLE=$(brew --prefix)/etc/openssl/cert.pem
 
+# mysql-client
+  export PATH="/usr/local/opt/mysql-client/bin:$PATH"
+
+# heroku autocomplete setup
+  export HEROKU_AC_ZSH_SETUP_PATH=/Users/amit/Library/Caches/heroku/autocomplete/zsh_setup && test -f $HEROKU_AC_ZSH_SETUP_PATH && source $HEROKU_AC_ZSH_SETUP_PATH;

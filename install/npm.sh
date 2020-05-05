@@ -18,8 +18,8 @@ FILE="$HOME/.nvm/nvm.sh"
 if [ ! -f "$FILE" ]; then
   
   echo "Installing NVM..."
-
-  git clone http://github.com/creationix/nvm.git .nvm
+  # Nvm
+    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
 
 fi
 
