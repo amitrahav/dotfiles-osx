@@ -106,7 +106,7 @@ export PAGER='less'
   export LDFLAGS="-L/usr/local/opt/gettext/lib"
   export CPPFLAGS="-I/usr/local/opt/gettext/include"
 
-# Python with virtualenvwrapper - the lazy edition 
+# Python with virtualenvwrapper - the lazy edition
 # https://virtualenvwrapper.readthedocs.io/en/latest/install.html#python-versions
   export WORKON_HOME=$HOME/.virtualenvs
   export PROJECT_HOME=$HOME/Projects

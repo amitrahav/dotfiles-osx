@@ -19,6 +19,10 @@ if [ -f `brew --prefix`/etc/bash_completion ]; then
   . `brew --prefix`/etc/bash_completion
 fi
 
+if [ -f `brew --prefix`/etc/bash_completion.d ]; then
+  . `brew --prefix`/etc/bash_completion.d
+fi
+
 if [ -f ~/.bash_aliases ]; then
   . ~/.bash_aliases
 fi
