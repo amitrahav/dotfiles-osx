@@ -75,7 +75,7 @@ alias vaghalt='vagrant halt'
 
 # Be nice
 alias htop='sudo htop'
-alias hosts='sudo $EDITOR /etc/hosts'   # yes I occasionally 127.0.0.1 twitter.com ;)
+alias hosts='sudo $EDITOR /etc/hosts'
 
 #
 # Time to upgrade `ls`

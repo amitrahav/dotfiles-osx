@@ -9,6 +9,7 @@ webstorm/settings.jar
 
 
 private
+private/*
 
 # Git credential file
 .gitconfig.local
@@ -25,7 +26,3 @@ Thumbs.db
 # Files that might appear on external disks
 .Spotlight-V100
 .Trashes
-config/apache/logs/*
-!config/nginx/sites-available/wps
-config/nginx/sites-available/
-config/nginx/sites-enabled/

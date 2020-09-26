@@ -106,7 +106,7 @@ unset file;
   if [ -f /Users/amit/Library/Python/2.7/bin/virtualenvwrapper.sh ]; then
     source /Users/amit/Library/Python/2.7/bin/virtualenvwrapper.sh
   fi
-  
+
 # Pyenv
   eval "$(pyenv init -)"
 

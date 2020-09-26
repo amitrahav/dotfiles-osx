@@ -35,6 +35,12 @@
 
   unset dirs_to_prepend
 
+# Execute private if exsits
+FILE=$FILE/private/shell_exports
+if test -f "$FILE"; then
+    source "$FILE"
+fi
+
 
 #   Set Default Editor (option of changing between local and remote)
 #   ------------------------------------------------------------
@@ -145,3 +151,9 @@ export PAGER='less'
 
 # heroku autocomplete setup
   export HEROKU_AC_ZSH_SETUP_PATH=/Users/amit/Library/Caches/heroku/autocomplete/zsh_setup && test -f $HEROKU_AC_ZSH_SETUP_PATH && source $HEROKU_AC_ZSH_SETUP_PATH;
+
+
+FILE=./private/shell-exports
+if test -f "$FILE"; then
+    echo "$FILE exists."
+fi
