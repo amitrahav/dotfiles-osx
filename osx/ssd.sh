@@ -41,5 +41,4 @@ sudo pmset -b disksleep 180  # Battery
 sudo pmset -c disksleep 180  # Power adapter
 
 
-echo
 echo "You need to restart your computer for the changes to take effect."

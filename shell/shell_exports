@@ -120,7 +120,7 @@ export PAGER='less'
   export VIRTUALENVWRAPPER_PYTHON=$(which python3)
 
 #brew
-  export SSL_CERT_FILE=$(brew --prefix)/etc/openssl/cert.pem
+#  export SSL_CERT_FILE=$(brew --prefix)/etc/openssl/cert.pem
 
 #android studio path
   export ANDROID_HOME="$HOME/Library/Android/sdk"
@@ -141,17 +141,8 @@ export PAGER='less'
   export LDFLAGS="-L/usr/local/opt/zlib/lib"
   export CPPFLAGS="-I/usr/local/opt/zlib/include"
 
-# Python Pyenv  https://github.com/pyenv/pyenv/wiki/common-build-problems
-  export SDKROOT=${XCODE_ROOT}/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk
-  export MACOSX_DEPLOYMENT_TARGET=10.14
-  export CURL_CA_BUNDLE=$(brew --prefix)/etc/openssl/cert.pem
-
-# mysql-client
-  export PATH="/usr/local/opt/mysql-client/bin:$PATH"
-
 # heroku autocomplete setup
   export HEROKU_AC_ZSH_SETUP_PATH=/Users/amit/Library/Caches/heroku/autocomplete/zsh_setup && test -f $HEROKU_AC_ZSH_SETUP_PATH && source $HEROKU_AC_ZSH_SETUP_PATH;
-
 
 FILE=./private/shell-exports
 if test -f "$FILE"; then

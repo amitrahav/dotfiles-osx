@@ -12,7 +12,7 @@ source ~/dotfiles-osx/shell/custome_prompt.sh
   export PATH="$(which phpcs):$PATH"
 
 export ZLE_RPROMPT_INDENT=0
-if [ -f ~/.antigen/antigen.log ]; then
+if [ -f $(brew --prefix)/share/antigen/antigen.zsh ]; then
   # Load antigen
   source $(brew --prefix)/share/antigen/antigen.zsh
   echo "Loading antigen"
@@ -94,21 +94,11 @@ done;
 unset file;
 
 
-#phpbrew
-  export PATH="/usr/local/bin/phpbrew:$PATH"
-  [[ -e ~/.phpbrew/bashrc ]] && source ~/.phpbrew/bashrc
-
-#wp-cli completions
-  fpath=(/usr/local/share/zsh-cometions $fpath)
-
 # Python with virtualenvwrapper
 # https://virtualenvwrapper.readthedocs.io/en/latest/install.html#python-versions
   if [ -f /Users/amit/Library/Python/2.7/bin/virtualenvwrapper.sh ]; then
     source /Users/amit/Library/Python/2.7/bin/virtualenvwrapper.sh
   fi
-
-# Pyenv
-  eval "$(pyenv init -)"
 
 # env vars for tiny-care-terminal - from https://github.com/notwaldorf/tiny-care-terminal
   source ~/dotfiles-osx/shell/tiny-care.env
