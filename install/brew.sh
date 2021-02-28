@@ -43,6 +43,7 @@ sudo rm /usr/local/bin/pip*
 sudo rm -Rf /Library/Frameworks/Python.framework/Versions/*
 
 apps=(
+    coreutils # for Gls as ls
     bash-completion2
     moreutils
     autojump

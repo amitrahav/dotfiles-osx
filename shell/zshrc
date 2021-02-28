@@ -2,14 +2,14 @@
 [ -f ~/.zsh.local ] && source ~/.zsh.local
 
 # shell integration -> https://iterm2.com/documentation-shell-integration.html
-source ~/.iterm2_shell_integration.`basename $SHELL`
+  source ~/.iterm2_shell_integration.`basename $SHELL`
 
 # Load personal prompt style before zsh
-source ~/dotfiles-osx/shell/custome_prompt.sh
+  export ZSH=$HOME/.oh-my-zsh
+  source ~/dotfiles-osx/shell/custome_prompt.sh
 
 #just php iterm intefration and code snippets
   test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
-  export PATH="$(which phpcs):$PATH"
 
 export ZLE_RPROMPT_INDENT=0
 if [ -f $(brew --prefix)/share/antigen/antigen.zsh ]; then
@@ -53,6 +53,7 @@ if [ -f $(brew --prefix)/share/antigen/antigen.zsh ]; then
 
   # Load the theme.
   antigen theme caiogondim/bullet-train-oh-my-zsh-theme bullet-train
+  # antigen bundle $HOME/.oh-my-zsh/custom/themes bullet-train.zsh-theme --no-local-clone
 
   # Tell antigen that you're done.
   antigen apply
@@ -66,7 +67,8 @@ else
 
   plugins=(git mvn z sudo adb gradle git-extras)
   plugins+=(zsh-completions)
-  autoload -U compinit && compinit # You should make sure $(compaudit) directories are owned by you and have 775 premissions
+
+  autoload -Uz compinit && compinit # You should make sure $(compaudit) directories are owned by you and have 775 premissions
 
   if [ -f `brew --prefix`/etc/bash_completion ]; then
     . `brew --prefix`/etc/bash_completion
@@ -94,14 +96,24 @@ done;
 unset file;
 
 
-# Python with virtualenvwrapper
-# https://virtualenvwrapper.readthedocs.io/en/latest/install.html#python-versions
-  if [ -f /Users/amit/Library/Python/2.7/bin/virtualenvwrapper.sh ]; then
-    source /Users/amit/Library/Python/2.7/bin/virtualenvwrapper.sh
-  fi
-
 # env vars for tiny-care-terminal - from https://github.com/notwaldorf/tiny-care-terminal
   source ~/dotfiles-osx/shell/tiny-care.env
 
 # thefuck https://github.com/nvbn/thefuck
   eval $(thefuck --alias)
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/Users/amitrahav/miniconda/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/Users/amitrahav/miniconda/etc/profile.d/conda.sh" ]; then
+        . "/Users/amitrahav/miniconda/etc/profile.d/conda.sh"
+    else
+        export PATH="/Users/amitrahav/miniconda/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
