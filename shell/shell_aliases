@@ -65,13 +65,6 @@ alias cask='brew cask' # i <3 u cask
 alias where=which # sometimes i forget
 alias brwe=brew  #typos
 
-# Vagrant aliases
-alias vag='vagrant'
-alias vagup='vagrant up'
-alias vagdestroy='vagrant destroy'
-alias vagssh='vagrant ssh'
-alias vaghalt='vagrant halt'
-
 # Be nice
 alias htop='sudo htop'
 alias hosts='sudo $EDITOR /etc/hosts'
@@ -119,6 +112,9 @@ alias pubkey="more ~/.ssh/id_rsa.pub | pbcopy | printf '=> Public key copied to 
 
 # Flush DNS cache
 alias flushdns="dscacheutil -flushcache"
+
+# Disable globbing  (bla[0]) from pip
+alias pip='noglob pip'
 
 #
 # GIT STUFF
@@ -176,12 +172,14 @@ function r() { grep "$1" ${@:2} -R . }
 #mkdir and cd
 function mkcd() { mkdir -p "$@" && cd "$_"; }
 
-# Aliases
-alias cppcompile='c++ -std=c++11 -stdlib=libc++'
-
-# Use sublimetext for editing config files
+# Use IDE for editing config files
 alias zshconfig="code ~/.zshrc"
 alias envconfig="code ~/Projects/config/env.sh"
+# zshrc config
+alias zshrc="${EDITOR} ${$(cd -P $(dirname $0) && cd ..; pwd -P)}"
+alias reload="zsh && echo 'Shell config reloaded from ~/.zshrc'"
+# zsh.local config
+alias localrc="if [[ -a ~/.zsh.local ]]; then ${EDITOR} ~/.zsh.local; fi"
 
 # Undo a `git push`
 alias undopush="git push -f origin HEAD^:master"
@@ -228,13 +226,6 @@ alias hidedotfiles="defaults write com.apple.finder AppleShowAllFiles -bool fals
 # Show/hide all desktop icons (useful when presenting)
 alias showdesktop="defaults write com.apple.finder CreateDesktop -bool true && killall Finder"
 alias hidedesktop="defaults write com.apple.finder CreateDesktop -bool false && killall Finder"
-
-# zshrc config
-alias zshrc="${EDITOR} ${$(cd -P $(dirname $0) && cd ..; pwd -P)}"
-alias reload="zsh && echo 'Shell config reloaded from ~/.zshrc'"
-
-# zsh.local config
-alias localrc="if [[ -a ~/.zsh.local ]]; then ${EDITOR} ~/.zsh.local; fi"
 
 # Update installed Ruby gems, Homebrew, npm, and their installed packages
 alias brew_update="brew -v update; brew upgrade --force-bottle --cleanup; brew cleanup; brew cask cleanup; brew prune; brew doctor; npm-check -g -u"
