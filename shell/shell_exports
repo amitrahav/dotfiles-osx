@@ -101,9 +101,9 @@ export LESS="${less_options[*]}"
 export PAGER='less'
 
 # NVM
-    export NVM_DIR="$HOME/.nvm"
-    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-    [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+  export NVM_DIR="$HOME/.nvm"
+  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+  [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # Homebrew
   export HOMEBREW_CASK_OPTS="--appdir=/Applications"
@@ -119,15 +119,9 @@ export PAGER='less'
   export VIRTUALENVWRAPPER_SCRIPT=/usr/local/bin/virtualenvwrapper.sh
   export VIRTUALENVWRAPPER_PYTHON=$(which python3)
 
-#brew
-#  export SSL_CERT_FILE=$(brew --prefix)/etc/openssl/cert.pem
-
 #android studio path
   export ANDROID_HOME="$HOME/Library/Android/sdk"
   export PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
-
-# yarn  // TODO: adding condition or remove
-  # export PATH="$PATH:`yarn global bin`"
 
 # avn (automatic version switching for node)
   [[ -s "$HOME/.avn/bin/avn.sh" ]] && source "$HOME/.avn/bin/avn.sh" # load avn
@@ -140,6 +134,3 @@ export PAGER='less'
 # Zlib
   export LDFLAGS="-L/usr/local/opt/zlib/lib"
   export CPPFLAGS="-I/usr/local/opt/zlib/include"
-
-# heroku autocomplete setup
-  export HEROKU_AC_ZSH_SETUP_PATH=/Users/amit/Library/Caches/heroku/autocomplete/zsh_setup && test -f $HEROKU_AC_ZSH_SETUP_PATH && source $HEROKU_AC_ZSH_SETUP_PATH;

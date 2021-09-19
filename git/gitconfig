@@ -254,7 +254,7 @@
         required = true
 
 [fetch]
-        prune = true
+	prune = true
 
 [user]
 	name = amit rahav
@@ -269,3 +269,7 @@
 	insteadOf = git://github.com/
 [http]
 	sslVerify = true
+[pull]
+	ff = only
+[init]
+	defaultBranch = main
